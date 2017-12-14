@@ -22,15 +22,7 @@ class OrderViewSet(mixins.ListModelMixin,
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-'''
-# orders/{order_id}/courses
-class OrderCourseList(APIView):
-  def get(self, request, order_id):
-    courses = OrderCourse.objects.filter(order.id=order_id)
-    serializer = OrderCourseSerializer(courses, many=True)
-    return Response(serializer.data)
-
-'''
+    
 class OrderCourseViewSet(mixins.ListModelMixin,
                          mixins.CreateModelMixin,
                          mixins.RetrieveModelMixin,
