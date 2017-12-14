@@ -22,7 +22,21 @@ class Order(models.Model):
         verbose_name = "Order"
         verbose_name_plural = "Orders"
 
-'''
     def __str__(self):
-        return "{}".format(self.pk)
-'''
+        return "id {}".format(self.pk)
+
+class OrderCourse(models.Model):
+    order = models.ForeignKey(
+        Order,
+        related_name='courses',
+        on_delete=models.CASCADE)
+    course_id = models.IntegerField(
+        blank=False,
+        null=False)
+
+    class Meta:
+        verbose_name = "Order course"
+        verbose_name_plural = "Order courses"
+
+    def __str__(self):
+        return 'order {} - course {}'.format(self.order.id, self.course_id)
