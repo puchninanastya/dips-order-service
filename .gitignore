@@ -1,0 +1,6 @@
+dips_order_service/__pycache__/
+order_service/__pycache__/
+order_service/migrations/__pycache__/
+order_service/tests/__pycache__/
+htmlcov/
+.coverage
