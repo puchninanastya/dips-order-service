@@ -13,5 +13,5 @@ class OrderSerializer(serializers.ModelSerializer):
 class OrderCourseSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='pk', read_only=True)
     class Meta:
-        model = Order
+        model = OrderCourse
         fields = '__all__'
