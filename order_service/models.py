@@ -6,11 +6,11 @@ class Order(models.Model):
         blank=False,
         null=False,
         verbose_name="By user")
-    order_date = models.DateField(
+    order_date = models.DateTimeField(
         blank=True,
         null=False,
         default=now,
-        verbose_name="Order date")
+        verbose_name="Order datetime")
     amount = models.PositiveIntegerField()
     is_paid = models.BooleanField(
         blank=True,

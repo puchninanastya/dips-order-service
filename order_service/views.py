@@ -9,6 +9,7 @@ from .serializers import OrderSerializer, OrderCourseSerializer
 from .models import Order, OrderCourse
 
 #TODO: Create tests for views
+#TODO: delete filter app
 
 class OrderViewSet(mixins.ListModelMixin,
                      mixins.CreateModelMixin,
@@ -22,7 +23,7 @@ class OrderViewSet(mixins.ListModelMixin,
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    
+
 class OrderCourseViewSet(mixins.ListModelMixin,
                          mixins.CreateModelMixin,
                          mixins.RetrieveModelMixin,
