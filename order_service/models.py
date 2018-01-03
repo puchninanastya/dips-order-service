@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 
 class Order(models.Model):
-    user_id = models.IntegerField(
+    user = models.IntegerField(
         blank=False,
         null=False,
         verbose_name="By user")
