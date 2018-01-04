@@ -11,4 +11,5 @@ router.register(r'orders/(?P<order_id>\d+)/courses', views.OrderCourseViewSet)
 # Additionally, we include the login URLs for the browsable API.
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^users/(?P<user_id>\d+)/orders$', views.UserOrderList.as_view(), name='user-orders-list'),
 ]
