@@ -11,7 +11,10 @@ class Order(models.Model):
         null=False,
         default=now,
         verbose_name="Order datetime")
-    amount = models.PositiveIntegerField()
+    amount = models.PositiveIntegerField(
+        blank=False,
+        null=False,
+        verbose_name="Amount to pay")
     is_paid = models.BooleanField(
         blank=True,
         null=False,
