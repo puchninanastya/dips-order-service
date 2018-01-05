@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework import exceptions
 
 from .models import Order, OrderCourse
 
@@ -38,10 +39,14 @@ class OrderSerializer(serializers.ModelSerializer):
         # query string ?paid={num} need to be equal to order amount
         request = self.context.get("request")
         is_paid_data = validated_data.pop('is_paid', instance.is_paid)
-        if (is_paid_data != instance.is_paid) and (is_paid_data is True):
+        if is_paid_data is True:
             amount_paid_data = self.context['request'].query_params.get('paid', None)
             if (amount_paid_data is not None) and (int(amount_paid_data) == instance.amount):
                 instance.is_paid = True
+            else:
+                raise exceptions.ValidationError()
+        else:
+            instance.is_paid = False
 
         instance.save()
 
