@@ -41,7 +41,9 @@ class OrderSerializer(serializers.ModelSerializer):
         is_paid_data = validated_data.pop('is_paid', instance.is_paid)
         if is_paid_data is True:
             amount_paid_data = self.context['request'].query_params.get('paid', None)
-            if (amount_paid_data is not None) and (int(amount_paid_data) == instance.amount):
+            if ((amount_paid_data is not None)
+                    and (amount_paid_data.isdigit())
+                    and (int(amount_paid_data) == instance.amount)):
                 instance.is_paid = True
             else:
                 raise exceptions.ValidationError()
