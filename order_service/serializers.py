@@ -12,6 +12,7 @@ class OrderCourseSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     courses = OrderCourseSerializer(many=True)
     id = serializers.IntegerField(source='pk', read_only=True)
+    order_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     class Meta:
         model = Order
         fields = ('id', 'user', 'order_date', 'amount', 'is_paid', 'courses')

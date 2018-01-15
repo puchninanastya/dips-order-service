@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.timezone import now
+from django.utils import timezone
 
 class Order(models.Model):
     user = models.IntegerField(
@@ -9,7 +9,7 @@ class Order(models.Model):
     order_date = models.DateTimeField(
         blank=True,
         null=False,
-        default=now,
+        default=timezone.localtime(timezone.now()),
         verbose_name="Order datetime")
     amount = models.PositiveIntegerField(
         blank=False,
